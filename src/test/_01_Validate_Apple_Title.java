@@ -24,7 +24,8 @@ public class _01_Validate_Apple_Title {
         String expectedTitle = "Apple"; // from requirement
         String actualTitle = driver.getTitle(); // from application under development
 
-
+        if(actualTitle.equals(expectedTitle)) System.out.println("Title validation PASSED");
+        else System.out.println("Title validation FAILED!!!");
 
         //3. Quit driver
         Thread.sleep(3000);
