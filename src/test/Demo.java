@@ -2,6 +2,7 @@ package test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.Driver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +31,6 @@ public class Demo {
         System.out.println("End of the program");
 
         //6. Quit driver
-        Thread.sleep(3000);// Wait for demo purpose
-        driver.quit();
+        Driver.quitDriver();
     }
 }
