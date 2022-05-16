@@ -23,15 +23,13 @@ public class _08_Locator_tagName {
 
         WebElement logo = driver.findElement(By.cssSelector(".central-featured-logo"));
 
-        WebElement searchInputBox = driver.findElement(By.cssSelector("#searchInput"));
+        WebElement searchInputBox = driver.findElement(By.id("searchInput"));
 
-      //  WebElement searchButton = driver.findElement(By.className("pure-button"));
-      //  WebElement searchButton = driver.findElement(By.className(".pure-button"));
-        WebElement searchButton = driver.findElement(By.cssSelector(". pure-button-primary-progressive"));
+        //WebElement searchButton = driver.findElement(By.className("pure-button"));
+        //WebElement searchButton = driver.findElement(By.cssSelector(".pure-button"));
+        WebElement searchButton = driver.findElement(By.cssSelector(".pure-button-primary-progressive"));
 
-        WebElement searchInput = driver.findElement(By.cssSelector(".pure-button pure-button-primary-progressive"));
-
-        System.out.println(heading1.isDisplayed()); //true
+        System.out.println(heading1.isDisplayed()); // true
         System.out.println(heading1.getText()); //
 
         System.out.println(logo.isDisplayed()); // true
@@ -39,7 +37,8 @@ public class _08_Locator_tagName {
         System.out.println(searchButton.isDisplayed()); // true
         System.out.println(searchButton.isEnabled()); // true
 
-        Driver.quitDriver();
+        System.out.println(heading1.isEnabled() ? "PASSED" : "FAILED");
 
+        Driver.quitDriver();
     }
 }
