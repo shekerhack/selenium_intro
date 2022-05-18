@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utilities.Driver;
 
+import static utilities.ValidationUtils.*;
+
 public class TestFacebook {
     /*
     Go to https://www.facebook.com/
@@ -95,9 +97,61 @@ public class TestFacebook {
 
 
 
+        // OTHER WAY
 
-        Driver.quitDriver();
+        WebDriver driver2 = Driver.getDriver();
 
+
+        try {
+            // get the website
+            driver.get("https://www.facebook.com/");
+
+            String expectedTitle3 = "Facebook - log in or sign up";
+            validateTitle(driver, expectedTitle);
+
+            String expectedUrl = "https://www.facebook.com/";
+            validateURL(driver, expectedUrl);
+
+            /*
+            xpath --> //tagName[@attributeName = 'attributeValue']
+            css   --> tagName[attributeName = 'attributeValue']
+             */
+            //                         xpath -->   //img[@class = 'fb_logo _8ilh img']
+            //                         css   -->     img[class = 'fb_logo _8ilh img']
+
+//            WebElement fbLogo = driver.findElement(By.className("fb_logo"));
+//            WebElement fbLogo = driver.findElement(By.cssSelector(".fb_logo"));
+//            WebElement fbLogo = driver.findElement(By.xpath("//img[@class = 'fb_logo _8ilh img']"));
+            WebElement fbLogo = driver.findElement(By.cssSelector("img[class = 'fb_logo _8ilh img']"));
+            validateElementIsDisplayed(fbLogo, "Facebook logo");
+
+//            WebElement fbHeading2 = driver.findElement(By.className("_8eso"));
+            WebElement fbHeading2 = driver.findElement(By.cssSelector("._8eso"));
+//            WebElement fbHeading2 = driver.findElement(By.xpath("//h2[@class='_8eso']"));
+//            WebElement fbHeading2 = driver.findElement(By.cssSelector("h2[class='_8eso']"));
+            validateElementIsDisplayed(fbHeading2, "Facebook header");
+
+            WebElement inputEmailPhone = driver.findElement(By.id("email"));
+            validateElementIsDisplayed(inputEmailPhone, "Email or phone number input box");
+
+            WebElement inputPassword = driver.findElement(By.id("pass"));
+            validateElementIsDisplayed(inputPassword, "Password input box");
+
+            WebElement loginButton = driver.findElement(By.name("login"));
+            validateElementIsDisplayedAndEnabled(loginButton, "Login button");
+
+            WebElement forgotPasswordLink = driver.findElement(By.linkText("Forgot password?"));
+            validateElementIsDisplayed(forgotPasswordLink, "Forgot password? link");
+
+//            WebElement createNewAccountButton = driver.findElement(By.xpath("//a[@data-testid='open-registration-form-button']"));
+            WebElement createNewAccountButton = driver.findElement(By.cssSelector("a[data-testid='open-registration-form-button']"));
+            validateElementIsDisplayed(createNewAccountButton, "Create New Account button");
+
+
+
+        } finally {
+            Driver.quitDriver();
+        }
 
     }
 }
